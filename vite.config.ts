@@ -22,9 +22,9 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:8000',
+      '/api': 'https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net',
       '/ws': {
-        target: 'ws://localhost:8000',
+        target: 'ws://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/',
         ws: true
       }
     }
