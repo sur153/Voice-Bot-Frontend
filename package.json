@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-	"start": "node node_modules/serve/build/main.js -s static -l 8080"
+	"start": "node node_modules/serve/build/main.js -s static -l 8080",
     "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
