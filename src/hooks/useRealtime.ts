@@ -19,9 +19,10 @@ export function useRealtime(options: RealtimeOptions) {
   const wsRef = useRef<WebSocket | null>(null)
   const audioRecording = useRef<any[]>([])
   const conversationRecording = useRef<any[]>([])
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   const connect = useCallback(async () => {
-    const config = await fetch('/api/config').then(r => r.json())
+    const config = await fetch(`${API_BASE_URL}/api/config`).then(r => r.json())
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
     const ws = new WebSocket(
       `${protocol}//${location.host}${config.ws_endpoint}`

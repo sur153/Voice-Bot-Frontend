@@ -4,6 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Scenario, Assessment } from '../types'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 
 function extractUserText(conversationMessages: any[]): string {
   return conversationMessages
@@ -15,17 +17,17 @@ function extractUserText(conversationMessages: any[]): string {
 
 export const api = {
   async getConfig() {
-    const res = await fetch('/api/config')
+    const res = await fetch(`${API_BASE_URL}/api/config`)
     return res.json()
   },
 
   async getScenarios(): Promise<Scenario[]> {
-    const res = await fetch('/api/scenarios')
+    const res = await fetch(`${API_BASE_URL}/api/scenarios`)
     return res.json()
   },
 
   async createAgent(scenarioId: string) {
-    const res = await fetch('/api/agents/create', {
+    const res = await fetch(`${API_BASE_URL}/api/agents/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ scenario_id: scenarioId }),
@@ -42,7 +44,7 @@ export const api = {
   ): Promise<Assessment> {
     const referenceText = extractUserText(conversationMessages)
 
-    const res = await fetch('/api/analyze', {
+    const res = await fetch(`${API_BASE_URL}/api/analyze`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -57,7 +59,7 @@ export const api = {
   },
 
   async generateGraphScenario(): Promise<Scenario> {
-    const res = await fetch('/api/scenarios/graph', {
+    const res = await fetch(`${API_BASE_URL}/api/scenarios/graph`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     })
