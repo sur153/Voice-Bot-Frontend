@@ -22,7 +22,7 @@ export function useRealtime(options: RealtimeOptions) {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   const connect = useCallback(async () => {
-    const config = await fetch(`${API_BASE_URL}/api/config`).then(r => r.json())
+    const config = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/api/config').then(r => r.json())
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
     const ws = new WebSocket(
       `${protocol}//${location.host}${config.ws_endpoint}`

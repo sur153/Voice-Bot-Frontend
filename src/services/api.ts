@@ -17,17 +17,17 @@ function extractUserText(conversationMessages: any[]): string {
 
 export const api = {
   async getConfig() {
-    const res = await fetch(`${API_BASE_URL}/api/config`)
+    const res = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/api/config')
     return res.json()
   },
 
   async getScenarios(): Promise<Scenario[]> {
-    const res = await fetch(`${API_BASE_URL}/api/scenarios`)
+    const res = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/api/scenarios')
     return res.json()
   },
 
   async createAgent(scenarioId: string) {
-    const res = await fetch(`${API_BASE_URL}/api/agents/create`, {
+    const res = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/api/agents/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ scenario_id: scenarioId }),
@@ -44,7 +44,7 @@ export const api = {
   ): Promise<Assessment> {
     const referenceText = extractUserText(conversationMessages)
 
-    const res = await fetch(`${API_BASE_URL}/api/analyze`, {
+    const res = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/api/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -59,7 +59,7 @@ export const api = {
   },
 
   async generateGraphScenario(): Promise<Scenario> {
-    const res = await fetch(`${API_BASE_URL}/api/scenarios/graph`, {
+    const res = await fetch('https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net//api/scenarios/graph', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     })
