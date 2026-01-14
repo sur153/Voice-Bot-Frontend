@@ -19,14 +19,5 @@ export default defineConfig({
         }
       }
     }
-  },
-  server: {
-    proxy: {
-      '/api': 'https://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net',
-      '/ws': {
-        target: 'ws://voice-bot-backend-fmgfctdkaac7hads.eastus2-01.azurewebsites.net/',
-        ws: true
-      }
-    }
   }
 })
